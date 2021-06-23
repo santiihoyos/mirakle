@@ -2,9 +2,8 @@ group rootProject.group
 def benchmarkVersion = '1.0.1'
 version benchmarkVersion
 
-apply plugin: 'maven'
-apply plugin: 'maven-publish'
-apply plugin: 'com.jfrog.bintray'
+//apply plugin: 'maven'
+//apply plugin: 'maven-publish'
 
 repositories {
     mavenCentral()
@@ -36,7 +35,7 @@ def pomConfig = {
     }
 }
 
-publishing {
+/*publishing {
     publications {
         MiraklePublication(MavenPublication) {
             from components.java
@@ -55,9 +54,9 @@ publishing {
             }
         }
     }
-}
+}*/
 
-bintray {
+/*bintray {
     user = System.getenv('BINTRAY_USER')
     key = System.getenv('BINTRAY_API_KEY')
     publish = true
@@ -73,13 +72,13 @@ bintray {
         version {
             name = benchmarkVersion
 
-            /*gpg { //TODO
+            *//*gpg { //TODO
                 sign = true
                 passphrase = System.getenv('BINTRAY_GPG_PASSPHRASE')
-            }*/
+            }*//*
         }
     }
-}
+}*/
 
 task validatePublishing {
     doLast {
@@ -90,4 +89,4 @@ task validatePublishing {
     }
 }
 
-bintrayUpload.dependsOn validatePublishing
+//bintrayUpload.dependsOn validatePublishing

@@ -1,4 +1,4 @@
-import com.instamotor.BuildConfig
+import com.instamotor.mirakle.BuildConfig
 import org.gradle.testkit.runner.GradleRunner
 import org.jetbrains.spek.api.Spek
 import org.jetbrains.spek.api.dsl.describe
@@ -63,7 +63,7 @@ object MirakleInitTest : Spek({
                             .let(::PrintWriter)
                             .use {
                                 it.append(PRINT_MESSAGE(uuid))
-                                it.appendln(MIRAKLE_GRADLE_ASSERT_EXEC_ARGS(folder.root.canonicalPath))
+                                it.appendln(ASSERT_EXEC_ARGS(folder.root.canonicalPath))
                             }
 
                 }

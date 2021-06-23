@@ -1,4 +1,4 @@
-import com.instamotor.BuildConfig
+import com.instamotor.mirakle.BuildConfig
 import org.gradle.testkit.runner.GradleRunner
 import org.jetbrains.spek.api.Spek
 import org.jetbrains.spek.api.dsl.describe
@@ -72,6 +72,16 @@ object BuildingTest : Spek({
                 it("should be executed locally") {
                     testResult.assertBuildSuccessful()
                     testResult.assertNoTask("mirakle")
+                }
+            }
+
+            on("explicitly providing mirakle task") {
+                val testResult = gradleRunner.addArgs("mirakle").test()
+
+                it("should be executed on remote") {
+                    testResult.assertTaskSucceed("uploadToRemote")
+                    testResult.assertTaskSucceed("executeOnRemote")
+                    testResult.assertTaskSucceed("downloadFromRemote")
                 }
             }
 
